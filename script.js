@@ -1,5 +1,6 @@
 const btn = document.getElementById("button");
 const btnPoint = document.getElementById("btnPoint");
+const btnReplay = document.getElementById("replay");
 const de1 = document.getElementById("des1");
 const de2 = document.getElementById("des2");
 const de3 = document.getElementById("des3");
@@ -16,6 +17,7 @@ let countPlayer2 = 0;
 let countPoint = 0;
 let currentPlayer = "player1";
 const countWin = 100;
+let gameWin = false;
 
 function random(min, max) {
     min = Math.ceil(min);
@@ -46,32 +48,52 @@ btnPoint.addEventListener('click', e =>{
     if(countPlayer1 >= countWin){
         countPlayer1 = countWin
         alert("player1 win!")
+        btnPoint.style.display='none';
+        btnReplay.style.display='block';
+        gameWin=true;
     }
     else if(countPlayer2 >= countWin){
         countPlayer2 = countWin
         alert("player2 win!")
+        btnPoint.style.display='none';
+        btnReplay.style.display='block';
+        gameWin=true;
     }
 }
 );
 
 btn.addEventListener('click', e=>{
-    let rand = random(1, 6)
-    if(rand === 1){
-        countPoint = 0
-        drawDe(1)
-        if(currentPlayer === "player1"){
-            currentPlayer = "player2"
-            Player.innerHTML = "Joueur 2"
+    if(gameWin === false){
+        let rand = random(1, 6)
+        if(rand === 1){
+            countPoint = 0;
+            drawDe(1)
+            if(currentPlayer === "player1"){
+                currentPlayer = "player2"
+                Player.innerHTML = "Joueur 2"
+            }
+            else{
+                currentPlayer = "player1"
+                Player.innerHTML = "Joueur 1"
+            }
+        }else{
+            drawDe(rand)
+            countPoint += rand
         }
-        else{
-            currentPlayer = "player1"
-            Player.innerHTML = "Joueur 1"
-        }
-    }else{
-        drawDe(rand)
-        countPoint += rand
+        point.innerHTML = countPoint
     }
-    point.innerHTML = countPoint
+})
+
+btnReplay.addEventListener('click', e=>{
+    countPoint = 0;
+    countPlayer2 = 0;
+    countPlayer1 = 0;
+    btnReplay.style.display = "none";
+    btnPoint.style.display = "block";
+    scorePlayer2.innerHTML=0;
+    scorePlayer1.innerHTML=0;
+    currentPlayer = "player1";
+    gameWin=false;
 })
 
 function drawDe(pcurrentDe){

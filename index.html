@@ -8,29 +8,34 @@
     <title>mon jeux de dés</title>
 </head>
 <body>
-    <h1>Le jeux de dés</h1>
-    <div id="des">
-        <img id="des1" src="images/des1.png" alt="dé_1">
-        <img id="des2" src="images/des2.png" alt="dé_2">
-        <img id="des3" src="images/des3.png" alt="dé_3">
-        <img id="des4" src="images/des4.png" alt="dé_4">
-        <img id="des5" src="images/des5.png" alt="dé_5">
-        <img id="des6" src="images/des6.png" alt="dé_6">
-    </div>
-    <p id="player">Joueur 1</p>
-    <input id="button" type="button" value="Roll">
-    <p id="point">0</p>
-    <input id="btnPoint" type="button" value="stock points">
-    
+    <div id="plateau">
+        <h1>Le jeux de dés</h1>
+        <div id="des">
+            <img id="des1" src="images/des1.png" alt="dé_1">
+            <img id="des2" src="images/des2.png" alt="dé_2">
+            <img id="des3" src="images/des3.png" alt="dé_3">
+            <img id="des4" src="images/des4.png" alt="dé_4">
+            <img id="des5" src="images/des5.png" alt="dé_5">
+            <img id="des6" src="images/des6.png" alt="dé_6">
+        </div>
+        <p id="player">Joueur 1</p>
 
-    <table>
-        <tr>
-            <td>Score du joueur 1 :</td><td id="scorePlayer1">0</td>
-        </tr>
-        <tr>
-            <td>Score du joueur 2 :</td><td id="scorePlayer2">0</td>
-        </tr>
-    </table>
+        <div id="flex_button">
+            <input id="button" type="button" value="Roll">
+            <input id="btnPoint" type="button" value="stock points">
+            <input id="replay" type="button" value="Rejouer">
+        </div>
+        <p id="point">0</p>
+
+        <table>
+            <tr>
+                <td>Score du joueur 1 :</td><td id="scorePlayer1">0</td>
+            </tr>
+            <tr>
+                <td>Score du joueur 2 :</td><td id="scorePlayer2">0</td>
+            </tr>
+        </table>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
