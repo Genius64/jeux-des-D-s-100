@@ -58,6 +58,7 @@ btn.addEventListener('click', e=>{
     let rand = random(1, 6)
     if(rand === 1){
         countPoint = 0
+        
         drawDe(null)
         if(currentPlayer === "player1"){
             currentPlayer = "player2"
@@ -70,8 +71,8 @@ btn.addEventListener('click', e=>{
     }else{
         drawDe(rand)
         countPoint += rand
-        point.innerHTML = countPoint
     }
+    point.innerHTML = countPoint
 })
 
 function drawDe(pcurrentDe){
