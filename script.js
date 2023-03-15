@@ -1,4 +1,5 @@
 const btn = document.getElementById("button");
+const btnPoint = document.getElementById("btnPoint");
 const de1 = document.getElementById("des1");
 const de2 = document.getElementById("des2");
 const de3 = document.getElementById("des3");
@@ -8,9 +9,11 @@ const de6 = document.getElementById("des6");
 const scorePlayer1 = document.getElementById("scorePlayer1");
 const scorePlayer2 = document.getElementById("scorePlayer2");
 const Player = document.getElementById("player");
+const point = document.getElementById("point");
 
 let countPlayer1 = 0;
 let countPlayer2 = 0;
+let countPoint = 0;
 let currentPlayer = "player1";
 const countWin = 100;
 
@@ -20,48 +23,56 @@ function random(min, max) {
    return Math.floor(Math.random()* (max - min)) + min;
 }
 
-btn.addEventListener('click', e =>{
-    if (countPlayer1 < countWin && countPlayer2 < countWin){
+btnPoint.addEventListener('click', e =>{
+    if (countPlayer1 < countWin && countPlayer2 < countWin && countPoint > 0){
         if(currentPlayer === "player1"){
-            let rand1 = random(1, 6)
-            drawDe(rand1)
-            countPlayer1 += rand1;
-            scorePlayer1.innerHTML=countPlayer1;
-            Player.innerHTML= "Joueur 2";
+            countPlayer1 += countPoint;
+            scorePlayer1.innerHTML = countPlayer1;
+            Player.innerHTML = "Joueur 2";
+            countPoint = 0;
             currentPlayer = "player2";
         }
         else{
-            let rand2 = random(1, 6)
-            drawDe(rand2)
-            countPlayer2 += rand2;
+            countPlayer2 += countPoint;
             scorePlayer2.innerHTML=countPlayer2;
             Player.innerHTML= "Joueur 1";
+            countPoint = 0;
             currentPlayer = "player1";
         };
+        drawDe(null)
+        point.innerHTML=countPoint
     }
 
-
-    if(countPlayer1 >= countWin && countPlayer2 >= countWin){
-        if(countPlayer1 > countPlayer2){
-            alert("player1 win!")
-        }else if (countPlayer1 < countPlayer2){
-            alert("player2 win!")
-        }else{
-            alert("Egaliter!")
-        }
+    if(countPlayer1 >= countWin){
         countPlayer1 = countWin
-        countPlayer2 = countWin
-    }
-    else if(countPlayer1 >= countWin){
         alert("player1 win!")
-        countPlayer1 = countWin
     }
     else if(countPlayer2 >= countWin){
-        alert("player2 win!")
         countPlayer2 = countWin
+        alert("player2 win!")
     }
 }
 );
+
+btn.addEventListener('click', e=>{
+    let rand = random(1, 6)
+    if(rand === 1){
+        countPoint = 0
+        drawDe(null)
+        if(currentPlayer === "player1"){
+            currentPlayer = "player2"
+            Player.innerHTML = "Joueur 2"
+        }
+        else{
+            currentPlayer = "player1"
+            Player.innerHTML = "Joueur 1"
+        }
+    }else{
+        drawDe(rand)
+        countPoint += rand
+        point.innerHTML = countPoint
+    }
+})
 
 function drawDe(pcurrentDe){
 
