@@ -10,6 +10,13 @@
 <body>
     <div id="plateau">
         <h1>Le jeux de dés</h1>
+        <div id="pseudos">
+            <div>
+                <input id="pseudo1" type="text" placeholder="Entrer pseudo du Joueur 1">
+                <input id="pseudo2" type="text" placeholder="Entrer pseudo du Joueur 2">
+            </div>
+            <input id="comfirm" type="button" value="Comfirmer">
+        </div>
         <div id="des">
             <img id="des1" src="images/des1.png" alt="dé_1">
             <img id="des2" src="images/des2.png" alt="dé_2">
@@ -18,16 +25,16 @@
             <img id="des5" src="images/des5.png" alt="dé_5">
             <img id="des6" src="images/des6.png" alt="dé_6">
         </div>
-        <p id="player">Joueur 1</p>
+        <p id="player"></p>
 
         <div id="flex_button">
             <input id="button" type="button" value="Roll">
-            <input id="btnPoint" type="button" value="stock points">
+            <input id="btnPoint" type="button" value="Stock points">
             <input id="replay" type="button" value="Rejouer">
         </div>
         <p id="point">0</p>
 
-        <table>
+        <table id="table_scores">
             <tr>
                 <td>Score du joueur 1 :</td><td id="scorePlayer1">0</td>
             </tr>
