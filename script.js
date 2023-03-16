@@ -1,12 +1,6 @@
 const btn = document.getElementById("button");
 const btnPoint = document.getElementById("btnPoint");
 const btnReplay = document.getElementById("replay");
-const de1 = document.getElementById("des1");
-const de2 = document.getElementById("des2");
-const de3 = document.getElementById("des3");
-const de4 = document.getElementById("des4");
-const de5 = document.getElementById("des5");
-const de6 = document.getElementById("des6");
 const scorePlayer1 = document.getElementById("scorePlayer1");
 const scorePlayer2 = document.getElementById("scorePlayer2");
 const player = document.getElementById("player");
@@ -17,6 +11,9 @@ const btnComfirm = document.getElementById("comfirm");
 const divPseudo = document.getElementById("pseudos");
 const table_scores = document.getElementById("table_scores");
 const flex_button = document.getElementById("flex_button");
+const des = document.getElementById('des')
+
+drawDe(false)
 
 let countPlayer1 = 0;
 let countPlayer2 = 0;
@@ -64,7 +61,7 @@ btnPoint.addEventListener('click', e =>{
             countPoint = 0;
             currentPlayer = "player1";
         };
-        drawDe(null)
+        drawDe(false)
         point.innerHTML=countPoint
     }
 
@@ -125,26 +122,8 @@ btnReplay.addEventListener('click', e=>{
     point.style.display="none";
 })
 
-function drawDe(pcurrentDe){
-
-    de1.style.display='none';
-    de2.style.display='none';
-    de3.style.display='none';
-    de4.style.display='none';
-    de5.style.display='none';
-    de6.style.display='none';
-
-    if(pcurrentDe === 1){
-        de1.style.display='block';
-    }else if(pcurrentDe === 2){
-        de2.style.display='block';
-    }else if(pcurrentDe === 3){
-        de3.style.display='block';
-    }else if(pcurrentDe === 4){
-        de4.style.display='block';
-    }else if(pcurrentDe === 5){
-        de5.style.display='block';
-    }else if(pcurrentDe === 6){
-        de6.style.display='block';
-    }
+function drawDe(pcd){
+    console.log(pcd)
+    des.style.display = pcd ? '' :'none'
+    des.setAttribute('src',`images/des${pcd}.png`)
 }
